@@ -5,6 +5,10 @@ import 'dotenv/config'
 
 import connectDB from './db.js';
 
+// import Booking from './models/Booking.js';
+// import Service from './models/Service.js';
+// import User from './models/User.js';
+
 const app = express()
 
 const port = 8080
