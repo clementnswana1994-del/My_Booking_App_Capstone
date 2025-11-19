@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
 
-const orderSchema = mongoose.Schema(
+const serviceSchema = mongoose.Schema(
   {
-    products: [
+    service: [
       {
         type: mongoose.ObjectId,
-        ref: "Products",
+        ref: "Service",
       },
     ],
 
@@ -24,6 +24,6 @@ const orderSchema = mongoose.Schema(
   { timestamps: true }
 );
 
-const Order = mongoose.model('Order', orderSchema);
+const Service = mongoose.model('Service', serviceSchema);
 
-export default Order;
+export default Service;
