@@ -2,21 +2,26 @@ import User from './models/User.js'
 import Booking from './models/Booking.js';
 import Service from './models/Service.js';
 import bcrypt from 'bcryptjs';
-import 
+import jwt from 'jsonwebtoken';
+
+
+const bcryptSalt = bcrypt.genSaltSync(10);
+const jwtSecret = 'fasefraw4r5r3wq45wdfgw34twdfg';
 
 
 app.post('/api/register', async (req,res) => {
   mongoose.connect(process.env.MONGO_URL);
-  const {name,email} = req.body;
+  const {name,email,password} = req.body;
 
   try {
     const userDoc = await User.create({
       name,
       email,
+      password:bcrypt.hashSync(password, bcryptSalt),
     });
     res.json(userDoc);
   } catch (e) {
-    res.status(400).json(e);
+    res.status(422).json(e);
   }
 
 });
