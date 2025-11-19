@@ -18,12 +18,12 @@ const serviceSchema = mongoose.Schema(
     status: {
       type: String,
       default: "Not Process",
-      enum: ['Not Process', 'Processing', 'Cancel'],
+      enum: ["Not Process", "Processing", "Cancel"],
     },
   },
   { timestamps: true }
 );
 
-const Service = mongoose.model('Service', serviceSchema);
+const Service = mongoose.model("Service", serviceSchema);
 
 export default Service;
