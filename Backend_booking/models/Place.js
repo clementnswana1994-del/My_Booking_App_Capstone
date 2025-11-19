@@ -1,19 +1,29 @@
 import mongoose from "mongoose";
 
-const placeSchema = new mongoose.Schema({
-  owner: {type:mongoose.Schema.Types.ObjectId, ref:'User'},
-  title: String,
-  address: String,
-  photos: [String],
-  description: String,
-  perks: [String],
-  extraInfo: String,
-  checkIn: Number,
-  checkOut: Number,
-  maxGuests: Number,
-  price: Number,
-});
+const orderSchema = mongoose.Schema(
+  {
+    products: [
+      {
+        type: mongoose.ObjectId,
+        ref: "Products",
+      },
+    ],
 
-const Place = mongoose.model('Place', placeSchema);
+    payment: {},
+    buyer: {
+      type: mongoose.ObjectId,
+      ref: "users",
+    },
 
-export default Place;
+    status: {
+      type: String,
+      default: "Not Process",
+      enum: ['Not Process', 'Processing', 'Cancel'],
+    },
+  },
+  { timestamps: true }
+);
+
+const Order = mongoose.model('Order', orderSchema);
+
+export default Order;
