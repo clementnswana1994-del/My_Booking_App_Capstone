@@ -1,25 +1,19 @@
 import express from 'express'
 
-import { auth } from "../middleware/authMiddleware";
+//import { auth } from "../middleware/authMiddleware";
 
-import {
-  getBookings,
-  createBooking,
-  updateBooking,
-  deleteBooking,
-  getBooking,
-} from "../controllers/bookingController";
+import controller from "../controllers/bookingController.js"
 
 const router = express.Router();
 
-router.get("/", auth, getBookings);
+router.get("/",  controller.getBookings);
 
-router.get("/:id", getBooking);
+router.get("/:id", controller.getBooking);
 
-router.post("/", createBooking);
+router.post("/", controller.createBooking);
 
-router.put("/:id", auth, updateBooking);
+router.put("/:id",  controller.updateBooking);
 
-router.delete("/:id", auth, deleteBooking);
+router.delete("/:id",  controller.deleteBooking);
 
 export default router;

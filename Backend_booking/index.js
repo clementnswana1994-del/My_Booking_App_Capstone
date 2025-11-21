@@ -1,9 +1,9 @@
 import express from 'express';
 import cors from 'cors';
 // import mongoose from 'mongoose';
-// import User from '../routes/UserRoutes.js';
-// import Booking from '../routes/BookingRoutes.js';
-// import Service from '../routes/ServiceRoutes.js';
+import serviceRoutes from './routes/serviceRoutes.js';
+import bookingRoutes from './routes/bookingRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 
 import cookieParser from 'cookie-parser';
 
@@ -14,17 +14,17 @@ import connectDB from './db.js';
 
 const app = express()
 
-const port = process.env.PORT || 8080
+const port = process.env.PORT || 8080;
 
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
 
-// setup routes
-//app.use("/api/Service", ServiceRoutes);
-//app.use("/api/Booking", BookingRoutes);
-//app.use("/api/Users", UserRoutes);
 
+// setup routes
+app.use("/api/service", serviceRoutes);
+app.use("/api/booking", bookingRoutes);
+app.use("/api/users", userRoutes);
 
 app.get('/', (req, res) => {
     res.json('Hello World! (from server)')

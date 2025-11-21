@@ -3,6 +3,4 @@ const errorHandler = (error, req, res, next) => {
   return res.status(statusCode).json({ message: error.message });
 };
 
-module.exports = {
-  errorHandler,
-};
+export default errorHandler;

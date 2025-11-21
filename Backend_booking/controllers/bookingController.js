@@ -1,4 +1,4 @@
-import Booking from "./models/BookingModel";
+import Booking from "../models/BookingModel.js";
 
 const getBookings = async (req, res, next) => {
   try {
@@ -80,7 +80,7 @@ const getBooking = async (req, res, next) => {
   }
 };
 
-module.exports = {
+export default {
   getBookings,
   createBooking,
   updateBooking,

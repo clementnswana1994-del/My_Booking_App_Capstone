@@ -1,4 +1,4 @@
-import Service from "./models/serviceModel";
+import Service from "../models/ServiceModel.js";
 
 const getServices = async (req, res) => {
   try {
@@ -48,7 +48,7 @@ const getService = async (req, res, next) => {
 };
 
 // update services
-const updateService = async (req, res, next) => {
+const updateServices = async (req, res, next) => {
   try {
     const updatedService = await Service.findByIdAndUpdate(
       req.params.id,
@@ -68,7 +68,7 @@ const updateService = async (req, res, next) => {
   }
 };
 
-const deleteService = async (req, res) => {
+const deleteServices = async (req, res) => {
   try {
     const service = await Service.findByIdAndDelete(req.params.id);
     if (!service) {
@@ -82,10 +82,10 @@ const deleteService = async (req, res) => {
   }
 };
 
-module.exports = {
+export default {
   getServices,
   createService,
   getService,
-  updateService,
-  deleteService,
+  updateServices,
+  deleteServices,
 };
