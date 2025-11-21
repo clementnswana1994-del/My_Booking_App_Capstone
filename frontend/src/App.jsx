@@ -1,9 +1,14 @@
 import { useEffect } from "react";
 import './App.css'
-// import Home from "./routes/Home";
-// import About from "./routes/About";
-// import Service from "./routes/Service";
-// import Contact from "./routes/Contact";
+//import "./styles/app.styles.scss";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./Pages/Home/Home";
+import Rooms from "./Pages/Services/Services";
+import Room from "./Pages/Service/Service";
+import Header from "./components/Header/Header";
+import Booking from "./Pages/Booking/Booking";
+import Success from "./Pages/Success/Success";
+
 
 function App() {
   useEffect(() => {
@@ -16,8 +21,17 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-     <h1>Welcome To Link-i</h1>
+    <div>
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/rooms" element={<Rooms />} />
+          <Route path="/rooms/all/:id" element={<Room />} />
+          <Route path="/bookings/:id" element={<Booking />} />
+          <Route path="/success" element={<Success />} />
+        </Routes>
+      </Router>
     </div>
   )
 }
