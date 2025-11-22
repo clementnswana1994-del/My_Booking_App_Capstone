@@ -1,39 +1,39 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-//import { createBooking, reset } from "../../features/booking/bookingSlice";
+import { createBooking, reset } from "../../features/bookingSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const Booking = () => {
-  const { id: roomId } = useParams();
+  const { id: serviceId } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { isSuccess } = useSelector((state) => state.booking);
 
-  const [room, setRoom] = useState(null);
+  const [service, setService] = useState(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    checkInDate: "",
-    checkOutDate: "",
+    confirm: "",
+    
   });
 
-  const { name, email, checkInDate, checkOutDate } = formData;
+  const { name, email, confirm } = formData;
 
   useEffect(() => {
-    const getRoom = async () => {
+    const getService = async () => {
       try {
-        const res = await fetch(`/api/rooms/${roomId}`);
+        const res = await fetch(`/api/services/${serviceId}`);
         const data = await res.json();
         if (!res.ok) {
-          return console.log("there was a problem getting room");
+          return console.log("there was a problem getting service");
         }
-        return setRoom(data);
+        return setService(data);
       } catch (error) {
         console.log(error.message);
       }
     };
-    getRoom();
+    getService();
   }, []);
 
   useEffect(() => {
@@ -54,11 +54,10 @@ const Booking = () => {
     e.preventDefault();
 
     const dataToSubmit = {
-      roomId,
+      serviceId,
       name,
       email,
-      checkInDate,
-      checkOutDate,
+      confirm,
     };
 
     dispatch(createBooking(dataToSubmit));
@@ -92,21 +91,11 @@ const Booking = () => {
           </div>
 
           <div className="input-group">
-            <label htmlFor="name">Check In Date</label>
+            <label htmlFor="name">Confirm</label>
             <input
-              type="date"
-              name="checkInDate"
-              value={checkInDate}
-              onChange={handleChange}
-            />
-          </div>
-
-          <div className="input-group">
-            <label htmlFor="name">Check Out Date</label>
-            <input
-              type="date"
-              name="checkOutDate"
-              value={checkOutDate}
+              type="status"
+              name="confirmation"
+              value={confirmation}
               onChange={handleChange}
             />
           </div>

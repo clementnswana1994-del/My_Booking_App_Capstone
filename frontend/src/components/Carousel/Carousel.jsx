@@ -17,7 +17,7 @@ const Carousel = ({ data }) => {
       return () => {
         clearInterval(interval);
       };
-    }, 8000);
+    }, 8080);
   }, []);
 
   console.log(currentIndex);

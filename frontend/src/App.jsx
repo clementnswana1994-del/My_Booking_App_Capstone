@@ -2,22 +2,22 @@ import { useEffect } from "react";
 import './App.css'
 //import "./styles/app.styles.scss";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./Pages/Home/Home";
-import Services from "./Pages/Services/Services";
-import Service from "./Pages/Service/Service";
-import Header from "./components/Header/Header";
-import Booking from "./Pages/Booking/Booking";
+import Home from "./Pages/Home/Home.jsx";
+import Services from "./Pages/Services/Services.jsx";
+import Service from "./Pages/Service/Service.jsx";
+import Header from "./components/Header/Header.jsx";
+import Booking from "./Pages/Booking/Booking.jsx";
 import Success from "./Pages/Success/Success";
 
 
 function App() {
   useEffect(() => {
-    async function test() {
-      const response = await fetch("http://localhost:8080");
+    async function getBooking() {
+      const response = await fetch("http://localhost:8080/");
       const result = await response.json();
       console.log(result);
     }
-    test();
+    getBooking();
   }, []);
 
   return (

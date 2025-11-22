@@ -2,7 +2,7 @@ import "./service.styles.css";
 import { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-//import { reset, deleteService } from "../../features/service/serviceSlice";
+import { reset, deleteService } from "../../features/serviceSlice";
 import Carousel from "../../components/Carousel/Carousel";
 
 const Service = () => {

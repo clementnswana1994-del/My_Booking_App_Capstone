@@ -1,9 +1,9 @@
-#room-list {
+#service-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 
-  .room-unit {
+  .service-unit {
     text-align: center;
     p {
       font-size: 1.2rem;
@@ -24,7 +24,7 @@
 }
 
 @media (max-width: 800px) {
-  #room-list {
+  #service-list {
     grid-template-columns: repeat(2, 1fr);
     .img-wrapper {
       height: 200px;
@@ -33,9 +33,9 @@
 }
 
 @media (max-width: 540px) {
-  #room-list {
+  #service-list {
     display: block;
-    .room-unit {
+    .service-unit {
       display: block;
       margin-bottom: 2rem;
     }

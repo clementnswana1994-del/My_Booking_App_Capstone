@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-// import mongoose from 'mongoose';
+import mongoose from 'mongoose';
 import serviceRoutes from './routes/serviceRoutes.js';
 import bookingRoutes from './routes/bookingRoutes.js';
 import userRoutes from './routes/userRoutes.js';

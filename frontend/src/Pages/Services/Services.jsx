@@ -1,4 +1,4 @@
-//import { getServices, reset } from "../../features/service/serviceSlice";
+import { getServices, reset } from "../../features/serviceSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import ServiceList from "../../components/ServiceList/ServiceList";
