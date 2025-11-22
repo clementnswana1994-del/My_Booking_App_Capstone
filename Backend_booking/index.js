@@ -1,38 +1,44 @@
-import express from 'express';
-import cors from 'cors';
-import mongoose from 'mongoose';
-import serviceRoutes from './routes/serviceRoutes.js';
-import bookingRoutes from './routes/bookingRoutes.js';
-import userRoutes from './routes/userRoutes.js';
+import express from "express";
+import dotenv from "dotenv";
+import morgan from "morgan";
+import cors from "cors";
+import fileUpload from "express-fileupload";
+import bodyParser from "body-parser";
 
-import cookieParser from 'cookie-parser';
+import { connectDB } from "./src/config/db.js";
+import authRoutes from "./src/routes/User.js";
+import postRoutes from "./src/routes/Post.js";
+import categoryRoutes from "./src/routes/Category.js";
+import bookingRoutes from "./src/routes/Booking.js";
 
-import 'dotenv/config'
+dotenv.config();
 
-import connectDB from './db.js';
+// connect to database
+connectDB();
 
-
-const app = express()
-
-const port = process.env.PORT || 8080;
+const app = express();
 
 app.use(express.json());
-app.use(cookieParser());
 app.use(cors());
+app.use(morgan("dev"));
+app.use(fileUpload({ useTempFiles: true }));
 
+// Middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// setup routes
-app.use("/api/service", serviceRoutes);
-app.use("/api/booking", bookingRoutes);
-app.use("/api/users", userRoutes);
-
-app.get('/', (req, res) => {
-    res.json('Hello World! (from server)')
-});
-
-
-
-app.listen(port, () => {
-    console.log('Listening on port: ' + port)
-    connectDB()
+app.get('/', (req, res) =>{
+  res.send("Welcome")
 })
+
+// Routes
+app.use("/auth/api", authRoutes);
+app.use("/api/post", postRoutes);
+app.use("/api/category", categoryRoutes);
+app.use("/api/booking", bookingRoutes);
+
+const PORT = process.env.PORT || 8080;
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
