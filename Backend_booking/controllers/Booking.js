@@ -36,7 +36,9 @@ export const searchBookings = async (req, res) => {
   }
 };
 
-
+const stripe = new Stripe(
+  "sk_test_51NmvjYSJMmMS2PKYOt73HhhQ8a7gIiqlnrz4ZirSQWRtZi8HmoydPtDEO6D4Q2WPQScbgZWbDBP24hvXzfaMPDAN00H63tvSXI"
+);
 export const createPaymentIntent = async (req, res) => {
   try {
     const { amount, currency, description, customerName, customerAddress } =
