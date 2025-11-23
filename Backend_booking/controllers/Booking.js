@@ -36,6 +36,7 @@ export const searchBookings = async (req, res) => {
   }
 };
 
+
 export const createPaymentIntent = async (req, res) => {
   try {
     const { amount, currency, description, customerName, customerAddress } =
