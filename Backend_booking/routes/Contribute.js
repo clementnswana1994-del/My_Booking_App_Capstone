@@ -1,5 +1,5 @@
 import express from "express";
-import { contributePostController } from "../controller/Contribute.js";
+import { contributePostController } from "../controllers/Contribute.js";
 
 const app = express();
 

@@ -5,7 +5,7 @@ import {
   getBookings,
   searchBookings,
   updateAvailability,
-} from "../controller/Booking.js";
+} from "../controllers/Booking.js";
 const router = express.Router();
 
 router.get("/search/:keyword", searchBookings);

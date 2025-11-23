@@ -8,7 +8,7 @@ import {
   postFiltersController,
   relatedPostController,
   updatePostController,
-} from "../controller/Post.js";
+} from "../controllers/Post.js";
 
 const app = express.Router();
 app.post("/create-post", createPostController);

@@ -6,12 +6,13 @@ import fileUpload from "express-fileupload";
 import bodyParser from "body-parser";
 
 import connectDB from "./db.js";
-import authRoutes from "./src/routes/User.js";
-import postRoutes from "./src/routes/Post.js";
-import categoryRoutes from "./src/routes/Category.js";
-import bookingRoutes from "./src/routes/Booking.js";
+import authRoutes from "./routes/User.js";
+import postRoutes from "./routes/Post.js";
+import categoryRoutes from "./routes/Category.js";
+import bookingRoutes from "./routes/Booking.js";
+// import '@dotenvx/dotenvx/config'
 
-import 'dotenv/config';
+dotenv.config();
 
 // connect to database
 connectDB();
@@ -37,9 +38,9 @@ app.use("/api/post", postRoutes);
 app.use("/api/category", categoryRoutes);
 app.use("/api/booking", bookingRoutes);
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8080
 
 app.listen(port, () => {
-  console.log(`Server is running on port: ` + port)
-  connectDB
-});
+    console.log('Listening on port: ' + port)
+    connectDB()
+})
